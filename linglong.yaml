@@ -1,0 +1,31 @@
+package:
+  id: portaudio19
+  name: portaudio19
+  version: 19.6.0
+  kind: lib
+  description: |
+    portaudio19.
+
+base:
+  id: org.deepin.base
+  version: 20.5.0
+
+source:
+  kind: git
+  url: https://github.com/deepin-community/portaudio19.git
+  version: master
+  commit: 2e74d2707305ecf84962dc70dc4462f768d89fe1
+  patch:
+  - audacity-portmixer.patch
+  - 944509-crash.patch
+variables:
+  extra_args: |
+    --disable-option-checking \
+    --disable-silent-rules \
+    --disable-maintainer-mode \
+    --disable-dependency-tracking \
+    --enable-cxx \
+    --with-pic=yes
+
+build:
+  kind: autotools
